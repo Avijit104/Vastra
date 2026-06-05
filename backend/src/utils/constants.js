@@ -5,12 +5,12 @@ export const gender = {
 };
 export const availableGender = Object.values(gender);
 
-export const role = {
+export const roles = {
   customer: "customer",
   seller: "seller",
   admin: "admin",
 };
-export const availableRole = Object.values(role);
+export const availableRole = Object.values(roles);
 
 export const addressType = {
   home: "home",
