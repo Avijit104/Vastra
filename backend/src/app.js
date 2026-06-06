@@ -6,6 +6,7 @@ import healthCheckRouter from "./route/healthCheck/healthCheck.route.js";
 import userRouter from "./route/user/user.route.js";
 import customerRouter from "./route/customer/customer.route.js";
 import addressRouter from "./route/customer/address.route.js";
+import wishlistRouter from "./route/customer/wishlist.route.js";
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.use("/api/v1/health-check", healthCheckRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/customer", customerRouter);
 app.use("/api/v1/customer/address", addressRouter);
+app.use("/api/v1/customer/wishlist", wishlistRouter);
 
 export default app;

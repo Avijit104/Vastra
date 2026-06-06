@@ -6,7 +6,7 @@ const wishlistSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "user",
     },
-    productid: {
+    product: {
       type: mongoose.Types.ObjectId,
       ref: "product",
     },

@@ -3,15 +3,15 @@ import { availableOrderStatus, orderStatus } from "../utils/constants";
 
 const orderSchema = new Schema(
   {
-    sellerid: {
+    seller: {
       type: mongoose.Types.ObjectId,
       ref: "user",
     },
-    customerid: {
+    customer: {
       type: mongoose.Types.ObjectId,
       ref: "user",
     },
-    productid: {
+    product: {
       type: mongoose.Types.ObjectId,
       ref: "product",
     },
