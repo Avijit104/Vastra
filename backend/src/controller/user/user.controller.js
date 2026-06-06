@@ -8,7 +8,7 @@ import { Role } from "../../model/role.model.js";
 import { Business } from "../../model/business.model.js";
 import { Customer } from "../../model/customer.model.js";
 
-import { roles, addressType } from "../../utils/constants.js";
+import { roles, addressTypes } from "../../utils/constants.js";
 
 // get user data
 const fetchUser = AsyncHandler(async (req, res) => {

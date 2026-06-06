@@ -1,8 +1,12 @@
 import mongoose, { Schema } from "mongoose";
-import { addressType, availableAddressType } from "../utils/constants";
+import { addressTypes, availableAddressType } from "../utils/constants.js";
 
 const addressSchema = new Schema(
   {
+    userid: {
+      type: mongoose.Types.ObjectId,
+      ref: "user",
+    },
     name: {
       type: String,
       required: true,
@@ -33,6 +37,11 @@ const addressSchema = new Schema(
       required: true,
       trim: true,
     },
+    district: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     pin: {
       type: String,
       required: true,
@@ -49,7 +58,7 @@ const addressSchema = new Schema(
       required: true,
     },
     visibility: {
-      type: Bollean,
+      type: Boolean,
       default: true,
     },
   },

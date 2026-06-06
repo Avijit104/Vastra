@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { availableGender } from "../../utils/constants";
+import { availableGender } from "../../utils/constants.js";
 
 const signupValidator = () => {
   return [

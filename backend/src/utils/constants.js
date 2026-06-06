@@ -12,12 +12,12 @@ export const roles = {
 };
 export const availableRole = Object.values(roles);
 
-export const addressType = {
+export const addressTypes = {
   home: "home",
   work: "work",
   business: "business",
 };
-export const availableAddressType = Object.values(addressType);
+export const availableAddressType = Object.values(addressTypes);
 
 export const category = {};
 export const availableCategory = Object.values(category);
