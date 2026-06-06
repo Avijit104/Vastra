@@ -4,6 +4,7 @@ import cors from "cors";
 
 import healthCheckRouter from "./route/healthCheck/healthCheck.route.js";
 import userRouter from "./route/user/user.route.js";
+import customerRouter from "./route/customer/customer.route.js";
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.use(
 
 app.use("/api/v1/health-check", healthCheckRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/customer", customerRouter);
 
 export default app;

@@ -218,6 +218,60 @@ const loginOtp = AsyncHandler(async (req, res) => {
   }
 });
 
+// logout
+const logout = AsyncHandler(async (req, res) => {
+  const userid = req.user._id;
+  const role = req.role;
+
+  const user = await User.findById(userid);
+  if (!user) {
+    throw new ApiError(404, "user not found");
+  }
+  const userRole = await Role.findOne({ userid: userid, role: role });
+  if (!userRole) {
+    throw new ApiError(409, "unauthorized access");
+  }
+
+  user.refreshToken = "";
+  await user.save({ validateBeforeSave: false });
+
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(new ApiResponse(200, "user logout successful"));
+});
+
+// update user emmail
+const updateEmail = AsyncHandler(async (req, res) => {
+  const userid = req.user._id;
+  const role = req.role;
+  const { email } = req.body;
+
+  const existingUser = await User.findOne({ email: email });
+  if (existingUser) {
+    throw new ApiError(401, "email id already registered");
+  }
+
+  const userRole = await Role.findOne({ userid: userid, role: role });
+  if (!userRole) {
+    throw new ApiError(404, "user not found");
+  }
+
+  const user = await User.findByIdAndUpdate(
+    userid,
+    { email: email },
+    { returnDocument: "after" },
+  );
+
+  return res.status(200).json(200, "email updated successful", { user: user });
+});
+
 // change password
 const changePassword = AsyncHandler(async (req, res) => {
   const userid = req.user._id;
@@ -236,11 +290,27 @@ const changePassword = AsyncHandler(async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(newPassword, salt);
   user.password = hashedPassword;
+  user.refreshToken = "";
   await user.save({ validateBeforeSave: false });
+
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
 
   return res
     .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, "password changed successfully"));
 });
 
-export { login, fetchUser, sendOtp, loginOtp, changePassword };
+export {
+  login,
+  fetchUser,
+  sendOtp,
+  loginOtp,
+  updateEmail,
+  logout,
+  changePassword,
+};

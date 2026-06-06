@@ -14,12 +14,23 @@ const loginValidator = () => {
       .notEmpty()
       .withMessage("password is required")
       .isLength({ min: 8 })
-      .withMessage("passwrd must be atleast 8 character long"),
+      .withMessage("password must be atleast 8 character long"),
     body("role")
       .notEmpty()
       .withMessage("role is required")
       .isIn(availableRole)
       .withMessage("invalid role"),
+  ];
+};
+
+const updateEmailValidator = () => {
+  return [
+    body("email")
+      .trim()
+      .notEmpty()
+      .withMessage("email is required")
+      .isEmail()
+      .withMessage("invalid email"),
   ];
 };
 
@@ -62,12 +73,6 @@ const loginOtpValidator = () => {
 
 const changePasswordValidator = () => {
   return [
-    body("oldPassword")
-      .trim()
-      .notEmpty()
-      .withMessage("password is required")
-      .isLength({ min: 8 })
-      .withMessage("passwrd must be atleast 8 character long"),
     body("newPassword")
       .trim()
       .notEmpty()
@@ -81,5 +86,6 @@ export {
   loginValidator,
   sendOtpValidator,
   loginOtpValidator,
+  updateEmailValidator,
   changePasswordValidator,
 };

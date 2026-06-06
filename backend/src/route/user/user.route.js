@@ -6,6 +6,8 @@ import {
   fetchUser,
   sendOtp,
   loginOtp,
+  updateEmail,
+  logout,
   changePassword,
 } from "../../controller/user/user.controller.js";
 
@@ -14,6 +16,7 @@ import {
   loginValidator,
   sendOtpValidator,
   loginOtpValidator,
+  updateEmailValidator,
   changePasswordValidator,
 } from "../../validators/user/user.validator.js";
 
@@ -32,6 +35,12 @@ router.route("/login-otp").post(loginOtpValidator(), validator, loginOtp);
 
 // secure rooutes
 router.route("/").get(jwtValidator, fetchUser);
+
+router.route("/logout").get(jwtValidator, logout);
+
+router
+  .route("/update-email")
+  .put(jwtValidator, updateEmailValidator(), validator, updateEmail);
 
 router
   .route("/change-password")
