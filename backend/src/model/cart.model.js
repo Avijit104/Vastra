@@ -6,9 +6,13 @@ const cartSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "user",
     },
-    productid: {
+    product: {
       type: mongoose.Types.ObjectId,
       ref: "product",
+    },
+    count: {
+      type: Number,
+      default: 1,
     },
   },
   { timestamps: true },

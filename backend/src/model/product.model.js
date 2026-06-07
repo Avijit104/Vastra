@@ -56,9 +56,9 @@ const productSchema = new Schema(
       required: true,
       trim: true,
     },
-    inStock: {
-      type: Boolean,
-      default: true,
+    stock: {
+      type: Number,
+      default: 1,
     },
   },
   { timestamps: true },
