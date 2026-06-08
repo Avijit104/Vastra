@@ -9,6 +9,7 @@ import addressRouter from "./route/customer/address.route.js";
 import wishlistRouter from "./route/customer/wishlist.route.js";
 import cartRouter from "./route/customer/cart.route.js";
 import cardRouter from "./route/customer/card.route.js";
+import upiRouter from "./route/customer/upi.route.js";
 
 const app = express();
 
@@ -38,5 +39,6 @@ app.use("/api/v1/customer/address", addressRouter);
 app.use("/api/v1/customer/wishlist", wishlistRouter);
 app.use("/api/v1/customer/cart", cartRouter);
 app.use("/api/v1/customer/card", cardRouter);
+app.use("/api/v1/customer/upi", upiRouter);
 
 export default app;
