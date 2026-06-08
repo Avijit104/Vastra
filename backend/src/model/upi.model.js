@@ -10,6 +10,7 @@ const upiSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     visibility: {
       type: Boolean,

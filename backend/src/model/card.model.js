@@ -10,6 +10,7 @@ const cardSchema = new Schema(
     cardno: {
       type: String,
       required: true,
+      unique: true,
       trim: true,
     },
     cvv: {
